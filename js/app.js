@@ -4,6 +4,7 @@ const todoList = document.querySelector(".todo-list")
 
 // event lisener
 submitBtn.addEventListener("click",addTastToList);
+todoList.addEventListener("click",checkOrDelete);
 
 // function
 function addTastToList(event){
@@ -49,6 +50,20 @@ function addTastToList(event){
     // remove tast from input fild
     todoInput.value='';
 
+}
+
+function checkOrDelete(event){
+    const item = event.target;
+    //User want ot delete todo
+    if( item.classList[0] == "trash" ){
+        const todo = item.parentElement; 
+        todo.remove();
+    }
+    else if( item.classList[0] == "check" ){
+        const todo = item.parentElement;
+        todo.classList.add("completed");
+        item.remove();
+    }
 }
 // submitBtn.addEventListener("click",function(event){
 //     event.preventDefault();
